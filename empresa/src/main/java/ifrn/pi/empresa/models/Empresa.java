@@ -1,26 +1,43 @@
 package ifrn.pi.empresa.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Empresa {
 
-	private String nome;
-	private String local;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String evento;
+	private String espaco;
 	private String data;
 	private String horario;
-
-	public String getNome() {
-		return nome;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getLocal() {
-		return local;
+	public String getEvento() {
+		return evento;
 	}
 
-	public void setLocal(String local) {
-		this.local = local;
+	public void setEvento(String evento) {
+		this.evento = evento;
+	}
+
+	public String getEspaco() {
+		return espaco;
+	}
+
+	public void setEspaco(String espaco) {
+		this.espaco = espaco;
 	}
 
 	public String getData() {
@@ -37,6 +54,12 @@ public class Empresa {
 
 	public void setHorario(String horario) {
 		this.horario = horario;
+	}
+	
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", evento=" + evento + ", espaco=" + espaco + ", data=" + data + ", horario=" + horario
+				+ "]";
 	}
 
 }
