@@ -16,7 +16,7 @@ import ifrn.pi.empresa.repositories.EmpresaRepository;
 
 		@RequestMapping("/empresa/form")
 		public String form() {
-		return "formEmpresa";
+		return "empresas/formEmpresa";
 
 		}
 		
@@ -24,7 +24,7 @@ import ifrn.pi.empresa.repositories.EmpresaRepository;
 		public String adicionar(Empresa empresa) {
 			System.out.println(empresa);
 			em.save(empresa);
-			return "empresa-adicionada";
+			return "empresas/empresa-adicionada";
 		}
 		
 		
