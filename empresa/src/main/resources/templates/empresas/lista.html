@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>Empresa de Festas</title>
+</head>
+
+<body>
+
+	<div th:replace="~{menu :: menu}" ></div>
+	
+	<div class="container">
+	<h1>Lista de Eventos</h1>
+	
+	<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>EVENTO</th>
+			<th>ESPAÇO</th>
+			<th>DATA</th>
+			<th>HORÁRIO</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="empresa : ${empresas}">
+			<td th:text="${empresa.id}">1</td>
+			<td th:text="${empresa.evento}">Colação de Grau</td>
+			<td th:text="${empresa.espaco}">IFRN - Campus Lajes</td>
+			<td th:text="${empresa.data}">02/02/2023</td>
+			<td th:text="${empresa.horario}">18h</td>
+		</tr>
+	</tbody>
+	</table>
+	</div>
+	
+</body>
+</html>
