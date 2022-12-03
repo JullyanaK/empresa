@@ -15,7 +15,7 @@ public class Empresa {
 	private String espaco;
 	private String data;
 	private String horario;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -55,11 +55,11 @@ public class Empresa {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Evento [id=" + id + ", evento=" + evento + ", espaco=" + espaco + ", data=" + data + ", horario=" + horario
+		return "Empresa [id=" + id + ", evento=" + evento + ", espaco=" + espaco + ", data=" + data + ", horario=" + horario
 				+ "]";
-	}
-
+		}
 }
+	
