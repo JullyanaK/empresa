@@ -5,6 +5,7 @@ package ifrn.pi.empresa.controllers;
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Controller;
 	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.PathVariable;
 	import org.springframework.web.bind.annotation.PostMapping;
 	import org.springframework.web.bind.annotation.RequestMapping;
 	import org.springframework.web.servlet.ModelAndView;
@@ -39,5 +40,20 @@ package ifrn.pi.empresa.controllers;
 			return mv;
 		}
 		
-		
+		@GetMapping("/{id}")
+		public ModelAndView detalhar(@PathVariable Long id) {
+			ModelAndView md = new ModelAndView();
+			java.util.Optional<Empresa> opt = em.findById(id);
+			
+			if(opt.isEmpty()) {
+				md.setViewName("redirect:/empresas");
+				return md;
+			}
+			
+			md.setViewName("empresas/detalhes");
+			Empresa empresa = opt.get();
+			md.addObject("empresa", empresa);
+			
+			return md;
+		}
 	}

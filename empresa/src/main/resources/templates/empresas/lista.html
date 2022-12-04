@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
@@ -11,7 +10,6 @@
 <body>
 
 	<div th:replace="~{menu :: menu}" ></div>
-	
 	<div class="container">
 	<h1>Lista de Eventos</h1>
 	
@@ -28,7 +26,7 @@
 	<tbody>
 		<tr th:each="empresa : ${empresas}">
 			<td th:text="${empresa.id}">1</td>
-			<td th:text="${empresa.evento}">Colação de Grau</td>
+			<td><a th:href="@{/empresas/{id}(id=${empresa.id})}"><span th:text="${empresa.evento}">Colação de Grau</span></a></td>
 			<td th:text="${empresa.espaco}">IFRN - Campus Lajes</td>
 			<td th:text="${empresa.data}">02/02/2023</td>
 			<td th:text="${empresa.horario}">18h</td>

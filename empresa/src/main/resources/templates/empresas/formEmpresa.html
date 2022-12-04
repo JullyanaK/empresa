@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <title>Empresa de Festas</title>
 </head>
-
 <body>
 
 	<div th:replace="~{menu :: menu}" ></div>
-	
 	<div class="container">
-	<h1>Adicionar Evento</h1>
-
+	<h1>Cadastrar Eventos</h1>
 	<form action="/empresas" method="post">
 
 		<div>
@@ -29,14 +25,11 @@
 		<div>
 			<label>HORARIO:</label> <input type="text" name="horario">
 		</div>
-
 		<div>
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 			<button class="waves-effect waves-light btn" type="reset">Limpar</button>
 		</div>
-
 	</form>
 	</div>
-	
 </body>
 </html>
