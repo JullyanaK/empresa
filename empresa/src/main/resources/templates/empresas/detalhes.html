@@ -13,9 +13,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
 	<div class="container">
 	<h1>Detalhes - Empresa de Festas</h1>
 	
-	  	 <div class="col s12 m6">
-      		 <div class="card blue-grey darken-1">
-        		<div class="card-content white-text">
+	 <div class="col s12 m6">
+      		 <div class="card">
+        		<div class="card-content">
           			<span class="card-title"><strong>Descrição do Evento</strong></span>
           			<p><strong>ID: </strong><span th:text="${empresa.id}">1</span></p>
           			<p><strong>Evento: </strong><span th:text="${empresa.evento}">Colação de Grau</span></p>
@@ -25,6 +25,61 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
         		</div>
       			</div>
    	 		</div>
+   	 		
+    		<div class="col s12 m6">
+      		 <div class="card">
+        		<div class="card-content">
+          			<span class="card-title"><strong>Cadastrar Participante:</strong></span>
+          			<form action="" method="post">
+          			
+          			<div>
+          				<label>Nome: </label> <input type="text" name="nome">
+          			</div>
+          			
+          			<div>
+          				<label>CPF: </label> <input type="text" name="cpf">
+          			</div>
+          			
+          			<div>
+          				<label>E-mail: </label> <input type="text" name="email">
+          			</div>
+          			
+          			<div>
+          				<button type="submit" class="btn">Salvar</button>
+          				<button type="reset" class="btn">Limpar</button>
+          			</div>
+          			 </form>
+        		</div>
+      			</div>
+   	 		</div>
+   	 		
+    		<div class="col s12 m6">
+      		 <div class="card">
+        		<div class="card-content">
+          			<span class="card-title"><strong>Participantes:</strong></span>
+          			<table class="centered">
+          				<thead>
+          				<tr>
+          					<th>ID: </th> 
+          					<th>Nome: </th>
+          					<th>CPF: </th>
+          					<th>E-mail: </th>
+          				</tr>
+          				</thead>
+          				<tbody>
+          				<tr th:each="p : ${participantes}">
+          					<td th:text="${p.id}">1</td> 
+          					<td th:text="${p.nome}">Jullyana Karolyne</td>
+          					<td th:text="${p.cpf}">127.531.004-46</td>
+          					<td th:text="${p.email}">jullyanakaroline@gmail.com</td>
+          				</tr>
+          				</tbody>
+          			</table>
+        		</div>
+      			</div>
+   	 		</div>
+   	 		
+   	 		
   		</div>
 </body>
 </html>

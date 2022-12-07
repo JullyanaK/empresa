@@ -11,7 +11,9 @@ package ifrn.pi.empresa.controllers;
 	import org.springframework.web.servlet.ModelAndView;
 
 	import ifrn.pi.empresa.models.Empresa;
-	import ifrn.pi.empresa.repositories.EmpresaRepository;
+import ifrn.pi.empresa.models.Participante;
+import ifrn.pi.empresa.repositories.EmpresaRepository;
+import ifrn.pi.empresa.repositories.ParticipanteRepository;
 
 	@Controller
 	@RequestMapping("/empresas")
@@ -19,6 +21,8 @@ package ifrn.pi.empresa.controllers;
 		
 		@Autowired
 		private EmpresaRepository em;
+		@Autowired
+		private ParticipanteRepository pa;
 
 		@GetMapping("/form")
 		public String form() {
@@ -54,6 +58,26 @@ package ifrn.pi.empresa.controllers;
 			Empresa empresa = opt.get();
 			md.addObject("empresa", empresa);
 			
+			List<Participante> participantes = pa.findByEmpresa(empresa);
+			md.addObject("participantes", participantes);
 			return md;
 		}
+		
+		@PostMapping("/{idEmpresa}")
+		public String salvarParticipante(@PathVariable Long idEmpresa, Participante participante) {
+			System.out.println("ID da empresa: " + idEmpresa);
+			System.out.println(participante);
+			
+			java.util.Optional<Empresa> opt = em.findById(idEmpresa);
+			if (opt.isEmpty()) {
+				return "redirect:/empresas";
+			}
+			
+			Empresa empresa = opt.get();
+			participante.setEmpresa(empresa);
+			
+			pa.save(participante);
+			
+			return "redirect:/empresas/{idEmpresa}";
 	}
+}
