@@ -26,14 +26,14 @@ import ifrn.pi.empresa.repositories.ParticipanteRepository;
 
 		@GetMapping("/form")
 		public String form() {
-		return "empresas/formEmpresa";
+		return "empresas/formOrçamento";
 		}
 		
 		@PostMapping
 		public String adicionar(Empresa empresa) {
 			System.out.println(empresa);
 			em.save(empresa);
-			return "empresas/empresa-adicionada";
+			return "empresas/orçamento-verificado";
 		}
 		
 		@GetMapping
@@ -79,5 +79,40 @@ import ifrn.pi.empresa.repositories.ParticipanteRepository;
 			pa.save(participante);
 			
 			return "redirect:/empresas/{idEmpresa}";
-	}
+		}
+		
+		@GetMapping("/{idEmpresa}/participantes/{idParticipante}/remover")
+		public String apagarParticipante(@PathVariable Long idEmpresa, @PathVariable Long idParticipante) {
+
+		java.util.Optional<Empresa> optEmpresa = em.findById(idEmpresa);
+		java.util.Optional<Participante> optParticipante = pa.findById(idParticipante);
+
+		if (!optEmpresa.isEmpty() || !optParticipante.isEmpty()) {
+			Empresa empresa = optEmpresa.get();
+			List<Participante> participantes = pa.findByEmpresa(empresa);
+
+			pa.deleteAll(participantes);
+		}
+
+		return "redirect:/empresas";
+		
+		}
+		
+		@GetMapping("/{id}/remover")
+		public String apagarEvento(@PathVariable Long id) {
+
+			java.util.Optional<Empresa> opt = em.findById(id);
+
+			if (!opt.isEmpty()) {
+				Empresa empresa = opt.get();
+
+				List<Participante> participantes = pa.findByEmpresa(empresa);
+
+				pa.deleteAll(participantes);
+				em.delete(empresa);
+			}
+
+			return "redirect:/empresas";
+		}
+		
 }

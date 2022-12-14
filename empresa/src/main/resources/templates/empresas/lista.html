@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Empresa de Festas</title>
 </head>
 
@@ -11,25 +12,38 @@
 
 	<div th:replace="~{menu :: menu}" ></div>
 	<div class="container">
-	<h1>Lista de Eventos</h1>
+	<h1>Cronograma dos Eventos que já foram cadastrados.</h1>
 	
-	<table class="centered">
+	<table class="striped">
 	<thead>
 		<tr>
 			<th>ID</th>
+			<th>NOME</th>
+			<th>E-MAIL</th>
 			<th>EVENTO</th>
 			<th>ESPAÇO</th>
 			<th>DATA</th>
 			<th>HORÁRIO</th>
+			<th>CIDADE</th>
+			<th>OBSERVAÇÕES</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="empresa : ${empresas}">
 			<td th:text="${empresa.id}">1</td>
-			<td><a th:href="@{/empresas/{id}(id=${empresa.id})}"><span th:text="${empresa.evento}">Colação de Grau</span></a></td>
+			<td><a th:href="@{/empresas/{id}(id=${empresa.id})}"><span th:text="${empresa.nome}">Jullyana</span></a></td>
+			<td th:text="${empresa.email}">jullyanakaroline@gmail.com</td>
+			<td th:text="${empresa.evento}">Colação de Grau</td>
 			<td th:text="${empresa.espaco}">IFRN - Campus Lajes</td>
 			<td th:text="${empresa.data}">02/02/2023</td>
 			<td th:text="${empresa.horario}">18h</td>
+			<td th:text="${empresa.cidade}">Lajes</td>
+			<td th:text="${empresa.observacoes}">observações</td>
+			
+			<td>
+				<a th:href="@{/empresas/{id}/remover(id=${empresa.id})}"><i class="material-icons">done_all</i></a>
+			</td>
+			
 		</tr>
 	</tbody>
 	</table>

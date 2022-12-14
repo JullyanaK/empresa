@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>Empresa de Festas</title>
+</head>
+<body>
+
+	<div th:replace="~{menu :: menu}" ></div>
+	<div class="container">
+	<h1>Utilize o formulário abaixo para solicitar o seu orçamento.</h1>
+	<form action="/empresas" method="post">
+
+		<div>
+			<label>NOME DO CONTRATANTE</label> <input type="text" name="nome">
+		</div>
+		<div>
+			<label>E-MAIL</label> <input type="text" name="email">
+		</div>
+		<div>
+			<label>EVENTO</label> <input type="text" name="evento">
+		</div>
+		<div>
+			<label>ESPAÇO</label> <input type="text" name="espaco">
+		</div>
+		<div>
+			<label>DATA</label> <input type="text" name="data">
+		</div>
+		<div>
+			<label>HORÁRIO</label> <input type="text" name="horario">
+		</div>
+		<div>
+			<label>CIDADE</label> <input type="text" name="cidade">
+		</div>
+		<div>
+			<label>OBSERVAÇÕES</label> <input type="text" name="observacoes">
+		</div>
+		
+		<div>
+			<button class="waves-effect waves-light btn" type="submit">Confirmar</button>
+			<button class="waves-effect waves-light btn" type="reset">Cancelar</button>
+		</div>
+	</form>
+	</div>
+</body>
+</html>
