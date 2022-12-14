@@ -5,6 +5,7 @@
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Eventos</title>
 </head>
 <body>
@@ -16,15 +17,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
 	 <div class="col s12 m6">
       		 <div class="card">
         		<div class="card-content">
-          			<span class="card-title"><strong>Descrição do Evento</strong></span>
+          			<span class="card-title"><strong>Dados da solicitação de orçamento descrito no cadastro anterior.</strong></span>
           			<p><strong>ID: </strong><span th:text="${empresa.id}">1</span></p>
+          			<p><strong>Nome do Contratante: </strong><span th:text="${empresa.nome}">Jullyana K</span></p>
+          			<p><strong>E-mail: </strong><span th:text="${empresa.email}">jullyanakaroline@gmail.com</span></p>
           			<p><strong>Evento: </strong><span th:text="${empresa.evento}">Colação de Grau</span></p>
           			<p><strong>Local: </strong><span th:text="${empresa.espaco}">IFRN - Campus Lajes</span></p>
           			<p><strong>Data: </strong><span th:text="${empresa.data}">02/02/2023</span></p>
           			<p><strong>Horário: </strong><span th:text="${empresa.horario}">18h</span></p>
+          			<p><strong>Cidade: </strong><span th:text="${empresa.cidade}">Lajes</span></p>
+          			<p><strong>Observações: </strong><span th:text="${empresa.observacoes}">observações</span></p>
         		</div>
-      			</div>
-   	 		</div>
+      		</div>
+   	 	</div>
    	 		
     		<div class="col s12 m6">
       		 <div class="card">
@@ -71,6 +76,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
           					<td th:text="${p.nome}">Jullyana Karolyne</td>
           					<td th:text="${p.cpf}">127.531.004-46</td>
           					<td th:text="${p.email}">jullyanakaroline@gmail.com</td>
+          					<td>
+          					<a th:href="@{/empresas/{idEmpresa}/participantes/{idParticipante}/selecionar(idEmpresa=${empresa.id}, idParticipante=${p.id})}"><i class="material-icons">edit</i></a>
+          					<a th:href="@{/empresas/{idEmpresa}/participantes/{idParticipante}/remover(idEmpresa=${empresa.id}, idParticipante=${p.id})}"><i class="material-icons">delete</i></a>
+          				</td>
           				</tr>
           				</tbody>
           			</table>
