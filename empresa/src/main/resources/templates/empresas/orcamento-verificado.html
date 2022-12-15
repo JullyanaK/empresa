@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 	<head>
 	<meta charset="UTF-8">
 	<!-- Compiled and minified CSS -->
@@ -10,11 +9,24 @@
 	</head>
 	
 	<body>
-	
+
 		<div th:replace="~{menu :: menu}" ></div>
 		<div class="container">
+		<h1>Dados protocolados!</h1>
 		
+		 <div class="col s12 m6">
+      		 <div class="card blue-grey darken-1">
+        		<div class="card-content white-text">
+          			<span class="card-title"><strong>Orçamento em processo de análise!</strong></span>
+				</div>
+			</div>
+		</div>
 		
-	</div>
+ 		 <div class="progress">
+      		<div class="indeterminate"></div>
+  		</div>
+		
+		</div>
 	</body>
+
 </html>

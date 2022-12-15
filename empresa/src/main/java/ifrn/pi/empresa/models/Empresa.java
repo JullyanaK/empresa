@@ -19,6 +19,11 @@ public class Empresa {
 	private String horario;
 	private String cidade;
 	private String observacoes;
+	private String barman;
+	private String buffet;
+	private String bandas;
+	private String fotografos;
+	private String decoracao;
 
 	public Long getId() {
 		return id;
@@ -92,11 +97,51 @@ public class Empresa {
 		this.observacoes = observacoes;
 	}
 	
+	public String getBarman() {
+		return barman;
+	}
 
+	public void setBarman(String barman) {
+		this.barman = barman;
+	}
+
+	public String getBuffet() {
+		return buffet;
+	}
+
+	public void setBuffet(String buffet) {
+		this.buffet = buffet;
+	}
+
+	public String getBandas() {
+		return bandas;
+	}
+
+	public void setBandas(String bandas) {
+		this.bandas = bandas;
+	}
+
+	public String getFotografos() {
+		return fotografos;
+	}
+
+	public void setFotografos(String fotografos) {
+		this.fotografos = fotografos;
+	}
+
+	public String getDecoracao() {
+		return decoracao;
+	}
+
+	public void setDecoracao(String decoracao) {
+		this.decoracao = decoracao;
+	}
+	
 	@Override
 	public String toString() {
-		return "Empresa [id=" + id + ", nome=" + nome + ", email=" + email + ", evento=" + evento + ", espaco=" + espaco + ", data=" + data + ", horario=" + horario + ", cidade=" + cidade + ", observacoes=" + observacoes + "]";
-		}
+		return "Empresa [id=" + id + ", nome=" + nome + ", email=" + email + ", evento=" + evento + ", espaco=" + espaco + ", data=" + data + ", horario=" + horario + ", cidade=" + cidade + ", observacoes=" + observacoes + " barman=" + barman + ", buffet=" + buffet +", bandas=" + bandas + ", fotografos=" + fotografos + ", decoracao=" + decoracao +"]";
+	}
 
 }
+
 	
