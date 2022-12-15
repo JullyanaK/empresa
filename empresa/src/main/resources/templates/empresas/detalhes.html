@@ -17,7 +17,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
 	 <div class="col s12 m6">
       		 <div class="card">
         		<div class="card-content">
-          			<span class="card-title"><strong>Dados da solicitação de orçamento descrito no cadastro anterior.</strong></span>
+          			<span class="card-title"><strong>Dados da solicitação do orçamento descrito no cadastro anterior.</strong></span>
           			<p><strong>ID: </strong><span th:text="${empresa.id}">1</span></p>
           			<p><strong>Nome do Contratante: </strong><span th:text="${empresa.nome}">Jullyana K</span></p>
           			<p><strong>E-mail: </strong><span th:text="${empresa.email}">jullyanakaroline@gmail.com</span></p>
@@ -30,7 +30,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
         		</div>
       		</div>
    	 	</div>
-   	 		
+   	 	
+   	 	 <div class="col s12 m6">
+      		 <div class="card">
+        		<div class="card-content">
+          			<span class="card-title"><strong>Serviços Preferenciais do Contratante: </strong></span>
+          			<p><strong>Serviços de Bartender: </strong><span th:text="${empresa.barman}">Jullyana K</span></p>
+          			<p><strong>Serviços de Buffet: </strong><span th:text="${empresa.buffet}">jullyanakaroline@gmail.com</span></p>
+          			<p><strong>Serviços para Contratação de Bandas: </strong><span th:text="${empresa.bandas}">Colação de Grau</span></p>
+          			<p><strong>Serviços Fotográficos: </strong><span th:text="${empresa.fotografos}">IFRN - Campus Lajes</span></p>
+          			<p><strong>Serviços de Decoração: </strong><span th:text="${empresa.decoracao}">02/02/2023</span></p>
+        		</div>
+      		</div>
+   	 	</div>
+   	 	
     		<div class="col s12 m6">
       		 <div class="card">
         		<div class="card-content">
@@ -76,10 +89,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
           					<td th:text="${p.nome}">Jullyana Karolyne</td>
           					<td th:text="${p.cpf}">127.531.004-46</td>
           					<td th:text="${p.email}">jullyanakaroline@gmail.com</td>
-          					<td>
-          					<a th:href="@{/empresas/{idEmpresa}/participantes/{idParticipante}/selecionar(idEmpresa=${empresa.id}, idParticipante=${p.id})}"><i class="material-icons">edit</i></a>
-          					<a th:href="@{/empresas/{idEmpresa}/participantes/{idParticipante}/remover(idEmpresa=${empresa.id}, idParticipante=${p.id})}"><i class="material-icons">delete</i></a>
-          				</td>
           				</tr>
           				</tbody>
           			</table>

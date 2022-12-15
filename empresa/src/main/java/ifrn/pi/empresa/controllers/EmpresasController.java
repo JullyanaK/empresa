@@ -26,14 +26,14 @@ import ifrn.pi.empresa.repositories.ParticipanteRepository;
 
 		@GetMapping("/form")
 		public String form() {
-		return "empresas/formOrçamento";
+		return "empresas/formOrcamento";
 		}
 		
 		@PostMapping
 		public String adicionar(Empresa empresa) {
 			System.out.println(empresa);
 			em.save(empresa);
-			return "empresas/orçamento-verificado";
+			return "empresas/orcamento-verificado";
 		}
 		
 		@GetMapping
@@ -79,23 +79,6 @@ import ifrn.pi.empresa.repositories.ParticipanteRepository;
 			pa.save(participante);
 			
 			return "redirect:/empresas/{idEmpresa}";
-		}
-		
-		@GetMapping("/{idEmpresa}/participantes/{idParticipante}/remover")
-		public String apagarParticipante(@PathVariable Long idEmpresa, @PathVariable Long idParticipante) {
-
-		java.util.Optional<Empresa> optEmpresa = em.findById(idEmpresa);
-		java.util.Optional<Participante> optParticipante = pa.findById(idParticipante);
-
-		if (!optEmpresa.isEmpty() || !optParticipante.isEmpty()) {
-			Empresa empresa = optEmpresa.get();
-			List<Participante> participantes = pa.findByEmpresa(empresa);
-
-			pa.deleteAll(participantes);
-		}
-
-		return "redirect:/empresas";
-		
 		}
 		
 		@GetMapping("/{id}/remover")
