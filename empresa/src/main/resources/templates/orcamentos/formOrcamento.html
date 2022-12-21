@@ -14,28 +14,28 @@
 	<form action="/orcamentos" method="post">
 
 		<div>
-			<label>NOME DO CONTRATANTE</label> <input type="text" name="nomedocliente">
+			<label>NOME DO CONTRATANTE</label> <input type="text" name="nomedocliente"  th:value="${orcamento.nomedocliente}">
 		</div>
 		<div>
-			<label>E-MAIL</label> <input type="text" name="email">
+			<label>E-MAIL</label> <input type="text" name="email" th:value="${orcamento.email}">
 		</div>
 		<div>
-			<label>EVENTO</label> <input type="text" name="tipodeevento">
+			<label>EVENTO</label> <input type="text" name="tipodeevento" th:value="${orcamento.tipodeevento}">
 		</div>
 		<div>
-			<label>ESPAÇO</label> <input type="text" name="espaco">
+			<label>ESPAÇO</label> <input type="text" name="espaco" th:value="${orcamento.espaco}">
 		</div>
 		<div>
-			<label>DATA</label> <input type="text" name="data">
+			<label>DATA</label> <input type="text" name="data" th:value="${orcamento.data}">
 		</div>
 		<div>
-			<label>HORÁRIO</label> <input type="text" name="horario">
+			<label>HORÁRIO</label> <input type="text" name="horario" th:value="${orcamento.horario}">
 		</div>
 		<div>
-			<label>CIDADE</label> <input type="text" name="cidade">
+			<label>CIDADE</label> <input type="text" name="cidade" th:value="${orcamento.cidade}">
 		</div>
 		<div>
-			<label>OBSERVAÇÕES</label> <input type="text" name="observacoes">
+			<label>OBSERVAÇÕES</label> <input type="text" name="observacoes" th:value="${orcamento.observacoes}">
 		</div>
 		
 		<div class="progress">
