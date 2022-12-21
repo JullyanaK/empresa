@@ -42,6 +42,7 @@
 			<td th:text="${orcamento.observacoes}">observações</td>
 			
 			<td>
+				<a th:href="@{/orcamentos/{id}/selecionar(id=${orcamento.id})}"><i class="material-icons">queue</i></a>
 				<a th:href="@{/orcamentos/{id}/remover(id=${orcamento.id})}"><i class="material-icons">done_all</i></a>
 			</td>
 		</tr>

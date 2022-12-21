@@ -1,6 +1,7 @@
 package ifrn.pi.empresa.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,14 @@ public class EmpresasController {
 	private OrcamentoRepository em;
 	@Autowired
 	private ParticipanteRepository pa;
+	
+	@GetMapping("/cadastrar")
+	public String cadastrar() {
+		return "orcamentos/formServico";
+	}
 
 	@GetMapping("/form")
-	public String form() {
+	public String form(Orcamento orcamento) {
 		return "orcamentos/formOrcamento";
 	}
 
@@ -36,11 +42,6 @@ public class EmpresasController {
 		return "orcamentos/orcamento-verificado";
 	}
 
-	@GetMapping("/cadastrar")
-	public String cadastrar() {
-		return "orcamentos/formServico";
-	}
-
 	@GetMapping
 	public ModelAndView listar() {
 		List<Orcamento> orcamentos = em.findAll();
@@ -48,7 +49,7 @@ public class EmpresasController {
 		mv.addObject("orcamentos", orcamentos);
 		return mv;
 	}
-
+	
 	@GetMapping("/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
@@ -84,6 +85,35 @@ public class EmpresasController {
 
 		return "redirect:/orcamentos/{idOrcamento}";
 	}
+	
+	@GetMapping("/{id}/selecionar")
+	public ModelAndView selecionarOrcamento(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+
+		java.util.Optional<Orcamento> opt = em.findById(id);
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/orcamentos");
+			return md;
+		}
+
+		Orcamento orcamento = opt.get();
+		md.setViewName("orcamentos/formOrcamento");
+		md.addObject("orcamento", orcamento);
+		return md;
+	}
+	
+	@GetMapping("/{idOrcamento}/participantes/{idParticipante}/retirar")
+	public String retirarParticipante(@PathVariable Long idOrcamento, @PathVariable Long idParticipante) {
+
+		Optional<Participante> opt = pa.findById( idParticipante);
+
+		if(!opt.isEmpty()) {
+			Participante participante = opt.get();
+			pa.delete(participante);
+		}
+
+		return "redirect:/orcamentos/{idOrcamento}";
+	}
 
 	@GetMapping("/{id}/remover")
 	public String concluirOrcamento(@PathVariable Long id) {
@@ -101,5 +131,5 @@ public class EmpresasController {
 
 		return "redirect:/orcamentos";
 	}
-
+	
 }

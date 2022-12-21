@@ -60,7 +60,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
     		<div class="col s12 m6">
       		 <div class="card">
         		<div class="card-content">
-          			<span class="card-title"><strong>Participantes:</strong></span>
+          			<span class="card-title"><strong>Participantes cadastrados no orçamento:</strong></span>
           			<table class="centered">
           				<thead>
           				<tr>
@@ -76,6 +76,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.m
           					<td th:text="${p.nome}">Jullyana Karolyne</td>
           					<td th:text="${p.cpf}">127.531.004-46</td>
           					<td th:text="${p.email}">jullyanakaroline@gmail.com</td>
+    
+          					<td>
+          						<a th:href="@{/orcamentos/{idOrcamento}/participantes/{idParticipante}/retirar(idOrcamento=${orcamento.id}, idParticipante=${p.id})}"><i class="material-icons">delete_sweep</i></a>
+          					</td>
           				</tr>
           				</tbody>
           			</table>
