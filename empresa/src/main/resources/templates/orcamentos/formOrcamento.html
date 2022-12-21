@@ -11,16 +11,16 @@
 	<div th:replace="~{menu :: menu}" ></div>
 	<div class="container">
 	<h1>Utilize o formulário abaixo para solicitar o seu orçamento.</h1>
-	<form action="/empresas" method="post">
+	<form action="/orcamentos" method="post">
 
 		<div>
-			<label>NOME DO CONTRATANTE</label> <input type="text" name="nome">
+			<label>NOME DO CONTRATANTE</label> <input type="text" name="nomedocliente">
 		</div>
 		<div>
 			<label>E-MAIL</label> <input type="text" name="email">
 		</div>
 		<div>
-			<label>EVENTO</label> <input type="text" name="evento">
+			<label>EVENTO</label> <input type="text" name="tipodeevento">
 		</div>
 		<div>
 			<label>ESPAÇO</label> <input type="text" name="espaco">
@@ -45,40 +45,17 @@
 		<h2>Serviços preferenciais da sua festa: </h2>
 		
 		<p>
-		<label>
-			<input type="checkbox" name="barman" value="R$880">
-			<span>Serviços de Bartender - Bar de Caipirinhas; Coquetéis Clássicos; Drinks sem Álcool.</span>
-		</label>
+		<label>SERVIÇO</label><input type="checkbox" name="servico">
+		</p>
+
+		<p>
+		<label>DESCRIÇÃO</label><input type="checkbox" name="descricao">
 		</p>
 		
 		<p>
-		<label>
-			<input type="checkbox" name="buffet" value="R$2500">
-			<span>Serviços de Buffet - Entradinha; Pesticos; Coquetel; Jantar.</span>
-		</label>
+		<label>VALOR</label><input type="checkbox" name="valor">
 		</p>
-		
-		<p>
-		<label>
-			<input type="checkbox" name="bandas" value="R$1500">
-			<span>Serviços para Contratação de Bandas - Música Ao Vivo, DJ, Voz e Violão.</span>
-		</label>
-		</p>
-		
-		<p>
-		<label>
-			<input type="checkbox" name="fotografos" value="R$500">
-			<span>Serviços Fotográficos - Equipe de Fotográfos Experientes</span>
-		</label>
-		</p>
-		
-		<p>
-		<label>
-			<input type="checkbox" name="decoracao" value="R$1200">
-			<span>Serviços de Decoração - Decoração completa: lounge para fotos, ilha de puffs, lutres, estofados e arranjos.</span>
-		</label>
-		</p>
-		
+				
 		<div class="progress">
       		<div class="indeterminate"></div>
   		</div>

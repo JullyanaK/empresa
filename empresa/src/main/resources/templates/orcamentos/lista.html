@@ -28,24 +28,25 @@
 			<th>OBSERVAÇÕES</th>
 		</tr>
 	</thead>
+	
 	<tbody>
-		<tr th:each="empresa : ${empresas}">
-			<td th:text="${empresa.id}">1</td>
-			<td><a th:href="@{/empresas/{id}(id=${empresa.id})}"><span th:text="${empresa.nome}">Jullyana</span></a></td>
-			<td th:text="${empresa.email}">jullyanakaroline@gmail.com</td>
-			<td th:text="${empresa.evento}">Colação de Grau</td>
-			<td th:text="${empresa.espaco}">IFRN - Campus Lajes</td>
-			<td th:text="${empresa.data}">02/02/2023</td>
-			<td th:text="${empresa.horario}">18h</td>
-			<td th:text="${empresa.cidade}">Lajes</td>
-			<td th:text="${empresa.observacoes}">observações</td>
+		<tr th:each="orcamento : ${orcamentos}">
+			<td th:text="${orcamento.id}">1</td>
+			<td><a th:href="@{/orcamentos/{id}(id=${orcamento.id})}"><span th:text="${orcamento.nomedocliente}">Jullyana</span></a></td>
+			<td th:text="${orcamento.email}">jullyanakaroline@gmail.com</td>
+			<td th:text="${orcamento.tipodeevento}">Colação de Grau</td>
+			<td th:text="${orcamento.espaco}">IFRN - Campus Lajes</td>
+			<td th:text="${orcamento.data}">02/02/2023</td>
+			<td th:text="${orcamento.horario}">18h</td>
+			<td th:text="${orcamento.cidade}">Lajes</td>
+			<td th:text="${orcamento.observacoes}">observações</td>
 			
 			<td>
-				<a th:href="@{/empresas/{id}/remover(id=${empresa.id})}"><i class="material-icons">done_all</i></a>
+				<a th:href="@{/orcamentos/{id}/remover(id=${orcamento.id})}"><i class="material-icons">done_all</i></a>
 			</td>
-			
 		</tr>
 	</tbody>
+	
 	</table>
 	</div>
 	

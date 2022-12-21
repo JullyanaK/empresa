@@ -17,7 +17,7 @@ public class Participante {
 	private String email;
 	
 	@ManyToOne
-	private Empresa empresa;
+	private Orcamento orcamento;
 	
 	public Long getId() {
 		return id;
@@ -46,12 +46,12 @@ public class Participante {
 		this.email = email;
 	}
 	
-	public Empresa getEmpresa() {
-		return empresa;
+	public Orcamento getOrcamento() {
+		return orcamento;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setOrcamento(Orcamento orcamento) {
+		this.orcamento = orcamento;
 	}
 	
 	@Override
