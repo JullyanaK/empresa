@@ -6,5 +6,5 @@ import ifrn.pi.empresa.models.Servico;
 
 public interface ServicoRepository extends JpaRepository<Servico, Long> {
 
-	}
+}
 

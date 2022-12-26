@@ -27,7 +27,7 @@
 	<tbody>
 		<tr th:each="servico : ${servicos}">
 			<td th:text="${servico.id}">1</td>
-			<td><a th:href="@{/servicos/{id}(id=${servico.id})}"><span th:text="${servico.servico}">Jullyana</span></a></td>
+			<td><a th:href="@{/servicos/{id}(id=${servico.id})}"><span th:text="${servico.nome}">Jullyana</span></a></td>
 			<td th:text="${servico.descricao}">jullyanakaroline@gmail.com</td>
 			<td th:text="${servico.valor}">Colação de Grau</td>
 			

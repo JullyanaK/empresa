@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ifrn.pi.empresa.models.Orcamento;
 import ifrn.pi.empresa.models.Participante;
+import ifrn.pi.empresa.models.Servico;
 import ifrn.pi.empresa.repositories.OrcamentoRepository;
 import ifrn.pi.empresa.repositories.ParticipanteRepository;
+import ifrn.pi.empresa.repositories.ServicoRepository;
 
 @Controller
 @RequestMapping("/orcamentos")
@@ -23,12 +25,9 @@ public class EmpresasController {
 	@Autowired
 	private OrcamentoRepository em;
 	@Autowired
+	private ServicoRepository sv;
+	@Autowired
 	private ParticipanteRepository pa;
-	
-	@GetMapping("/cadastrar")
-	public String cadastrar() {
-		return "orcamentos/formServico";
-	}
 
 	@GetMapping("/form")
 	public String form(Orcamento orcamento) {
@@ -49,7 +48,7 @@ public class EmpresasController {
 		mv.addObject("orcamentos", orcamentos);
 		return mv;
 	}
-	
+
 	@GetMapping("/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
@@ -85,7 +84,7 @@ public class EmpresasController {
 
 		return "redirect:/orcamentos/{idOrcamento}";
 	}
-	
+
 	@GetMapping("/{id}/selecionar")
 	public ModelAndView selecionarOrcamento(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
@@ -101,13 +100,13 @@ public class EmpresasController {
 		md.addObject("orcamento", orcamento);
 		return md;
 	}
-	
+
 	@GetMapping("/{idOrcamento}/participantes/{idParticipante}/retirar")
 	public String retirarParticipante(@PathVariable Long idOrcamento, @PathVariable Long idParticipante) {
 
-		Optional<Participante> opt = pa.findById( idParticipante);
+		Optional<Participante> opt = pa.findById(idParticipante);
 
-		if(!opt.isEmpty()) {
+		if (!opt.isEmpty()) {
 			Participante participante = opt.get();
 			pa.delete(participante);
 		}
@@ -131,5 +130,26 @@ public class EmpresasController {
 
 		return "redirect:/orcamentos";
 	}
-	
+
+	// ADCIONANDO SERRVIÇOS
+
+	@GetMapping("/cadastrar")
+	public String formSV(Servico servico) {
+		return "servicos/formServico";
+	}
+
+	@GetMapping("/listaSV")
+	public String servicos() {
+		return "servicos/listadeservicos";
+	}
+
+	// @GetMapping("listaSV")
+	//public ModelAndView listar2() {
+		//List<Servico> servicos = sv.findAll();
+		//ModelAndView mv = new ModelAndView("orcamentos/listadeservicos");
+		//mv.addObject("servicos", servicos);
+	//	return mv;
+
+	//}
+
 }

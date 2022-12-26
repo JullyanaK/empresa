@@ -7,14 +7,14 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Servico {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String servico;
+	private String nome;
 	private String descricao;
 	private String valor;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -23,12 +23,12 @@ public class Servico {
 		this.id = id;
 	}
 
-	public String getServico() {
-		return servico;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setServico(String servico) {
-		this.servico = servico;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getDescricao() {
@@ -46,10 +46,10 @@ public class Servico {
 	public void setValor(String valor) {
 		this.valor = valor;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Servico [id=" + id + ", servico=" + servico + ", descricao=" + descricao +", valor=" + valor + "]";
+		return "Servico [id=" + id + ", servico=" + nome + ", descricao=" + descricao + ", valor=" + valor + "]";
 	}
 
 }

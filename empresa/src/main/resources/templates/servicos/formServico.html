@@ -11,13 +11,13 @@
 	<div th:replace="~{menu :: menu}" ></div>
 	<div class="container">
 	<h1>Utilize o formulário abaixo para cadastrar serviços. </h1>
-	<form action="/orcamentos" method="post">
-
+	<form action="/servicos" method="post">
+		<input type="hidden" name="id" >
 		<div>
-			<label>SERVIÇO</label> <input type="text" name="servico">
+			<label>SERVIÇO</label> <input type="text" name="nome">
 		</div>
 		<div>
-			<label>DESCRIÇÃO</label> <input type="text" name="descricao">
+			<label>DESCRIÇÃO</label> <input type="text" name="descricao" >
 		</div>
 		<div>
 			<label>VALOR</label> <input type="text" name="valor">
