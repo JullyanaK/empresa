@@ -18,17 +18,12 @@ import ifrn.pi.empresa.repositories.ParticipanteRepository;
 
 @Controller
 @RequestMapping("/orcamentos")
-public class EmpresasController {
+public class OrcamentosController {
 
 	@Autowired
 	private OrcamentoRepository em;
 	@Autowired
 	private ParticipanteRepository pa;
-	
-	@GetMapping("/cadastrar")
-	public String cadastrar() {
-		return "orcamentos/formServico";
-	}
 
 	@GetMapping("/form")
 	public String form(Orcamento orcamento) {
@@ -80,20 +75,20 @@ public class EmpresasController {
 
 		Orcamento orcamento = opt.get();
 		participante.setOrcamento(orcamento);
-
 		pa.save(participante);
-
 		return "redirect:/orcamentos/{idOrcamento}";
 	}
 	
 	@GetMapping("/{id}/selecionar")
 	public ModelAndView selecionarOrcamento(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
-
 		java.util.Optional<Orcamento> opt = em.findById(id);
+		
 		if (opt.isEmpty()) {
+			
 			md.setViewName("redirect:/orcamentos");
 			return md;
+			
 		}
 
 		Orcamento orcamento = opt.get();
@@ -104,12 +99,13 @@ public class EmpresasController {
 	
 	@GetMapping("/{idOrcamento}/participantes/{idParticipante}/retirar")
 	public String retirarParticipante(@PathVariable Long idOrcamento, @PathVariable Long idParticipante) {
-
 		Optional<Participante> opt = pa.findById( idParticipante);
-
+		
 		if(!opt.isEmpty()) {
+			
 			Participante participante = opt.get();
 			pa.delete(participante);
+			
 		}
 
 		return "redirect:/orcamentos/{idOrcamento}";
@@ -117,12 +113,11 @@ public class EmpresasController {
 
 	@GetMapping("/{id}/remover")
 	public String concluirOrcamento(@PathVariable Long id) {
-
 		java.util.Optional<Orcamento> opt = em.findById(id);
 
 		if (!opt.isEmpty()) {
 			Orcamento orcamento = opt.get();
-
+			
 			List<Participante> participantes = pa.findByOrcamento(orcamento);
 
 			pa.deleteAll(participantes);
