@@ -10,22 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ifrn.pi.empresa.models.Orcamento;
 import ifrn.pi.empresa.models.Participante;
 import ifrn.pi.empresa.models.Servico;
 import ifrn.pi.empresa.repositories.OrcamentoRepository;
 import ifrn.pi.empresa.repositories.ParticipanteRepository;
-import ifrn.pi.empresa.repositories.ServicoRepository;
 
 @Controller
 @RequestMapping("/orcamentos")
-public class EmpresasController {
+public class OrcamentosController {
 
 	@Autowired
 	private OrcamentoRepository em;
-	@Autowired
-	private ServicoRepository sv;
 	@Autowired
 	private ParticipanteRepository pa;
 
@@ -71,25 +67,23 @@ public class EmpresasController {
 	public String salvarParticipante(@PathVariable Long idOrcamento, Participante participante) {
 		System.out.println("ID do orçamento: " + idOrcamento);
 		System.out.println(participante);
-
 		java.util.Optional<Orcamento> opt = em.findById(idOrcamento);
+		
 		if (opt.isEmpty()) {
 			return "redirect:/orcamentos";
 		}
 
 		Orcamento orcamento = opt.get();
 		participante.setOrcamento(orcamento);
-
 		pa.save(participante);
-
 		return "redirect:/orcamentos/{idOrcamento}";
 	}
 
 	@GetMapping("/{id}/selecionar")
 	public ModelAndView selecionarOrcamento(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
-
 		java.util.Optional<Orcamento> opt = em.findById(id);
+		
 		if (opt.isEmpty()) {
 			md.setViewName("redirect:/orcamentos");
 			return md;
@@ -103,7 +97,6 @@ public class EmpresasController {
 
 	@GetMapping("/{idOrcamento}/participantes/{idParticipante}/retirar")
 	public String retirarParticipante(@PathVariable Long idOrcamento, @PathVariable Long idParticipante) {
-
 		Optional<Participante> opt = pa.findById(idParticipante);
 
 		if (!opt.isEmpty()) {
@@ -116,7 +109,6 @@ public class EmpresasController {
 
 	@GetMapping("/{id}/remover")
 	public String concluirOrcamento(@PathVariable Long id) {
-
 		java.util.Optional<Orcamento> opt = em.findById(id);
 
 		if (!opt.isEmpty()) {
@@ -131,7 +123,7 @@ public class EmpresasController {
 		return "redirect:/orcamentos";
 	}
 
-	// ADCIONANDO SERRVIÇOS
+	// ADCIONANDO SERVIÇOS
 
 	
 
@@ -139,14 +131,5 @@ public class EmpresasController {
 	public String servicos() {
 		return "servicos/listadeservicos";
 	}
-
-	// @GetMapping("listaSV")
-	//public ModelAndView listar2() {
-		//List<Servico> servicos = sv.findAll();
-		//ModelAndView mv = new ModelAndView("orcamentos/listadeservicos");
-		//mv.addObject("servicos", servicos);
-	//	return mv;
-
-	//}
 
 }
