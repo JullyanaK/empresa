@@ -12,15 +12,15 @@
 	<div class="container">
 	<h1>Utilize o formulário abaixo para cadastrar serviços. </h1>
 	<form action="/servicos" method="post">
-		<input type="hidden" name="id" >
+		<input type="hidden" name="id"  th:value="${servico.id}">
 		<div>
-			<label>SERVIÇO</label> <input type="text" name="nome">
+			<label>SERVIÇO</label> <input type="text" name="nome" th:value="${servico.nome}">
 		</div>
 		<div>
-			<label>DESCRIÇÃO</label> <input type="text" name="descricao" >
+			<label>DESCRIÇÃO</label> <input type="text" name="descricao"  th:value="${servico.descricao}">
 		</div>
 		<div>
-			<label>VALOR</label> <input type="text" name="valor">
+			<label>VALOR</label> <input type="text" name="valor"  th:value="${servico.valor}">
 		</div>
   		
   		<div>

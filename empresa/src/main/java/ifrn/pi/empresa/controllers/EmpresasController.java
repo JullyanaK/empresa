@@ -133,10 +133,7 @@ public class EmpresasController {
 
 	// ADCIONANDO SERRVIÇOS
 
-	@GetMapping("/cadastrar")
-	public String formSV(Servico servico) {
-		return "servicos/formServico";
-	}
+	
 
 	@GetMapping("/listaSV")
 	public String servicos() {
