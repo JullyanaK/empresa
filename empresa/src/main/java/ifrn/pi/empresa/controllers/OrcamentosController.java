@@ -10,22 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ifrn.pi.empresa.models.Orcamento;
 import ifrn.pi.empresa.models.Participante;
 import ifrn.pi.empresa.models.Servico;
 import ifrn.pi.empresa.repositories.OrcamentoRepository;
 import ifrn.pi.empresa.repositories.ParticipanteRepository;
-import ifrn.pi.empresa.repositories.ServicoRepository;
 
 @Controller
 @RequestMapping("/orcamentos")
-public class EmpresasController {
+public class OrcamentosController {
 
 	@Autowired
 	private OrcamentoRepository em;
-	@Autowired
-	private ServicoRepository sv;
 	@Autowired
 	private ParticipanteRepository pa;
 
@@ -131,7 +127,7 @@ public class EmpresasController {
 		return "redirect:/orcamentos";
 	}
 
-	// ADCIONANDO SERRVIÇOS
+	// ADCIONANDO SERVIÇOS
 
 	@GetMapping("/cadastrar")
 	public String formSV(Servico servico) {
@@ -142,14 +138,5 @@ public class EmpresasController {
 	public String servicos() {
 		return "servicos/listadeservicos";
 	}
-
-	// @GetMapping("listaSV")
-	//public ModelAndView listar2() {
-		//List<Servico> servicos = sv.findAll();
-		//ModelAndView mv = new ModelAndView("orcamentos/listadeservicos");
-		//mv.addObject("servicos", servicos);
-	//	return mv;
-
-	//}
 
 }
