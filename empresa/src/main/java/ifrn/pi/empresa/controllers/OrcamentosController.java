@@ -67,25 +67,23 @@ public class OrcamentosController {
 	public String salvarParticipante(@PathVariable Long idOrcamento, Participante participante) {
 		System.out.println("ID do orçamento: " + idOrcamento);
 		System.out.println(participante);
-
 		java.util.Optional<Orcamento> opt = em.findById(idOrcamento);
+		
 		if (opt.isEmpty()) {
 			return "redirect:/orcamentos";
 		}
 
 		Orcamento orcamento = opt.get();
 		participante.setOrcamento(orcamento);
-
 		pa.save(participante);
-
 		return "redirect:/orcamentos/{idOrcamento}";
 	}
 
 	@GetMapping("/{id}/selecionar")
 	public ModelAndView selecionarOrcamento(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
-
 		java.util.Optional<Orcamento> opt = em.findById(id);
+		
 		if (opt.isEmpty()) {
 			md.setViewName("redirect:/orcamentos");
 			return md;
@@ -99,7 +97,6 @@ public class OrcamentosController {
 
 	@GetMapping("/{idOrcamento}/participantes/{idParticipante}/retirar")
 	public String retirarParticipante(@PathVariable Long idOrcamento, @PathVariable Long idParticipante) {
-
 		Optional<Participante> opt = pa.findById(idParticipante);
 
 		if (!opt.isEmpty()) {
@@ -112,7 +109,6 @@ public class OrcamentosController {
 
 	@GetMapping("/{id}/remover")
 	public String concluirOrcamento(@PathVariable Long id) {
-
 		java.util.Optional<Orcamento> opt = em.findById(id);
 
 		if (!opt.isEmpty()) {
