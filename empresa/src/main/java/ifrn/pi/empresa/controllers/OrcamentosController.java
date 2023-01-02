@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ifrn.pi.empresa.models.Orcamento;
 import ifrn.pi.empresa.models.Participante;
+import ifrn.pi.empresa.models.Orcamento;
+import ifrn.pi.empresa.models.Participante;
+import ifrn.pi.empresa.models.Servico;
+
 import ifrn.pi.empresa.repositories.OrcamentoRepository;
 import ifrn.pi.empresa.repositories.ParticipanteRepository;
 
@@ -44,7 +47,7 @@ public class OrcamentosController {
 		mv.addObject("orcamentos", orcamentos);
 		return mv;
 	}
-	
+
 	@GetMapping("/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
@@ -68,7 +71,6 @@ public class OrcamentosController {
 		System.out.println("ID do orçamento: " + idOrcamento);
 		System.out.println(participante);
 
-		java.util.Optional<Orcamento> opt = em.findById(idOrcamento);
 		if (opt.isEmpty()) {
 			return "redirect:/orcamentos";
 		}
@@ -78,7 +80,7 @@ public class OrcamentosController {
 		pa.save(participante);
 		return "redirect:/orcamentos/{idOrcamento}";
 	}
-	
+  
 	@GetMapping("/{id}/selecionar")
 	public ModelAndView selecionarOrcamento(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
@@ -89,6 +91,8 @@ public class OrcamentosController {
 			md.setViewName("redirect:/orcamentos");
 			return md;
 			
+			md.setViewName("redirect:/orcamentos");
+			return md;
 		}
 
 		Orcamento orcamento = opt.get();
@@ -105,7 +109,14 @@ public class OrcamentosController {
 			
 			Participante participante = opt.get();
 			pa.delete(participante);
-			
+
+	@GetMapping("/{idOrcamento}/participantes/{idParticipante}/retirar")
+	public String retirarParticipante(@PathVariable Long idOrcamento, @PathVariable Long idParticipante) {
+		Optional<Participante> opt = pa.findById(idParticipante);
+
+		if (!opt.isEmpty()) {
+			Participante participante = opt.get();
+			pa.delete(participante);
 		}
 
 		return "redirect:/orcamentos/{idOrcamento}";
@@ -117,7 +128,7 @@ public class OrcamentosController {
 
 		if (!opt.isEmpty()) {
 			Orcamento orcamento = opt.get();
-			
+
 			List<Participante> participantes = pa.findByOrcamento(orcamento);
 
 			pa.deleteAll(participantes);
@@ -126,5 +137,10 @@ public class OrcamentosController {
 
 		return "redirect:/orcamentos";
 	}
-	
+
+	@GetMapping("/listaSV")
+	public String servicos() {
+		return "servicos/listadeservicos";
+	}
+
 }
