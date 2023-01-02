@@ -29,7 +29,7 @@ public class ServicoController {
 		return "servicos/orcamento-verificado";
 	}
 	
-	@GetMapping("/cadastrar")
+	@GetMapping("/form")
 	public String formSV(Servico servico) {
 		return "servicos/formServico";
 	}

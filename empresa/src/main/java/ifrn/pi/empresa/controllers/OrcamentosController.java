@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ifrn.pi.empresa.models.Orcamento;
 import ifrn.pi.empresa.models.Participante;
-import ifrn.pi.empresa.models.Servico;
 import ifrn.pi.empresa.repositories.OrcamentoRepository;
 import ifrn.pi.empresa.repositories.ParticipanteRepository;
 
@@ -121,15 +120,6 @@ public class OrcamentosController {
 		}
 
 		return "redirect:/orcamentos";
-	}
-
-	// ADCIONANDO SERVIÇOS
-
-	
-
-	@GetMapping("/listaSV")
-	public String servicos() {
-		return "servicos/listadeservicos";
 	}
 
 }
