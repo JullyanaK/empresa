@@ -12,7 +12,11 @@
 
 	<div th:replace="~{menu :: menu}" ></div>
 	<div class="container">
-	<h2>Serviços já Cadastrados</h2>
+	<h1>Serviços Cadastrados</h1>
+	
+		<div class="progress">
+      		<div class="indeterminate"></div>
+  		</div>
 	
 	<table class="centered">
 	<thead>
@@ -37,13 +41,10 @@
 			</td>
 		</tr>
 	</tbody>
-	
 	</table>
 	
-	<table class="centered">
-		
-		<h3>Preferências de Serviços</h3>
-		
+		<h2>Preferências de Serviços</h2>
+		<table class="centered">
 		<thead>
 		<tr>
 			<th>SELECIONAR</th>
@@ -52,9 +53,7 @@
 			<th>DESCRIÇÃO</th>
 			<th>VALOR</th>
 		</tr>
-			
 	</thead>
-	
 	<tbody>
 			
 		<tr th:each="servico : ${servicos}">
@@ -72,9 +71,6 @@
 	</tbody>
 
 	</table>
-	
-	
-		
 		<div class="progress">
       		<div class="indeterminate"></div>
   		</div>
@@ -83,9 +79,6 @@
 			<button class="waves-effect waves-light btn" type="submit">Confirmar</button>
 			<button class="waves-effect waves-light btn" type="reset">Cancelar</button>
 		</div>
-		
-	
 	</div>
-	
 </body>
 </html>
