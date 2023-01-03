@@ -12,7 +12,7 @@
 
 	<div th:replace="~{menu :: menu}" ></div>
 	<div class="container">
-	<h1>Cronograma dos Serviços que já foram cadastrados.</h1>
+	<h2>Serviços já Cadastrados</h2>
 	
 	<table class="centered">
 	<thead>
@@ -39,6 +39,52 @@
 	</tbody>
 	
 	</table>
+	
+	<table class="centered">
+		
+		<h3>Preferências de Serviços</h3>
+		
+		<thead>
+		<tr>
+			<th>SELECIONAR</th>
+			<th>ID</th>
+			<th>TIPO DE SERVIÇO</th>
+			<th>DESCRIÇÃO</th>
+			<th>VALOR</th>
+		</tr>
+			
+	</thead>
+	
+	<tbody>
+			
+		<tr th:each="servico : ${servicos}">
+		
+			<td>
+				<a> <label> <input type="checkbox" /> <span></span> </label> </a>
+			</td>
+			
+			<td th:text="${servico.id}" >1</td>
+			<td><a th:href="@{/servicos/{id}(id=${servico.id})}"><span th:text="${servico.nome}">Jullyana</span></a></td>
+			<td th:text="${servico.descricao}">jullyanakaroline@gmail.com</td>
+			<td th:text="${servico.valor}">Colação de Grau</td>
+			
+		</tr>
+	</tbody>
+
+	</table>
+	
+	
+		
+		<div class="progress">
+      		<div class="indeterminate"></div>
+  		</div>
+		
+		<div>
+			<button class="waves-effect waves-light btn" type="submit">Confirmar</button>
+			<button class="waves-effect waves-light btn" type="reset">Cancelar</button>
+		</div>
+		
+	
 	</div>
 	
 </body>
